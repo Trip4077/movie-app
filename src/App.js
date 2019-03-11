@@ -10,6 +10,7 @@ class App extends Component {
       search: '',
       plot: 'short',
       page: 1,
+      pageList: [],
       totalMovies: 0,
       results: []
     }
@@ -22,14 +23,31 @@ class App extends Component {
     this.performSearch(searchTerm);
   }
 
+  selectPage = e => {
+    this.setState({ page: e.target.innerText })
+  }
+
   performSearch = searchTerm => {
     axios.get(`http://www.omdbapi.com/?s=${searchTerm}&plot=${this.state.plot}&page=${this.state.page}&apikey=db6f6716`)
           .then(res => {
-            console.log(res.data);
+            
+            const pageListEnd = this.totalMovies % 10 === 0 ? Math.floor(res.data.totalResults / 10)
+                                                            : Math.floor(res.data.totalResults / 10) + 1;
+            let list = [];
+
+            for(let i = 1; i <= pageListEnd; i++ ) {
+              if(i > Number(res.data.totalResults)) break;
+              
+              list.push(i);
+            }
+
+            if(!res.data.totalResults) list = [];
+
             this.setState({
               results: res.data.Search,
               totalMovies: Number(res.data.totalResults),
-              search: searchTerm
+              search: searchTerm,
+              pageList: list
             })
           })
           .catch(err => {
@@ -37,11 +55,8 @@ class App extends Component {
           })
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
+    console.log(this.state.page, this.state.results)
     return (
       <div className="App">
         <form>
@@ -50,8 +65,17 @@ class App extends Component {
                  value={this.state.search}
                  onChange={this.handleChange}
                  placeholder='Enter movie title...' />
-
         </form>
+
+        <div className='page-index'>
+            <span> &#x2039; </span>
+
+            <ul>
+              {this.state.pageList.map(pageNum => <li key={pageNum} onClick={this.selectPage}>{pageNum}</li>)}
+            </ul>
+
+            <span> &#x203A; </span>
+        </div>
       </div>
     );
   }
