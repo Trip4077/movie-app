@@ -3,7 +3,8 @@ import axios from 'axios';
 
 import Search from '../components/Searchbar/Search';
 import PageSelect from '../components/Pagination/PageSelect';
-import Thumbnail from '../components/Movies/Thumbnail';
+import MovieList from '../components/Movies/MovieList';
+
 
 class SearchPage extends Component {
   constructor(props) {
@@ -71,12 +72,7 @@ class SearchPage extends Component {
                 search={this.state.search}
                 />
 
-        <div>
-          {this.state.results && this.state.results.length > 0 
-                              ? this.state.results.map(movie => <Thumbnail key={Math.random()} movie={movie} />)
-                              : <p>No Results Found</p>}
-        </div>
-
+        <MovieList results={this.state.results} />
 
         <PageSelect performSearch={this.performSearch}
                     page={this.state.page}
