@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 
+import Search from './components/Searchbar/Search';
+import PageSelect from './components/Pagination/PageSelect';
+import Thumbnail from './components/Movies/Thumbnail';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,18 +22,6 @@ class App extends Component {
 
   handleChange = e => {
     this.setState({ search: e.target.value });
-  }
-
-  selectPage = e => {
-    this.performSearch(e, Number(e.target.innerText))
-  }
-
-  incrementPage = e => {
-    this.performSearch(e, (this.state.page + 1))
-  }
-
-  decrementPage = e => {
-    this.performSearch(e, (this.state.page - 1))
   }
 
   performSearch = (e, newpage) => {
@@ -72,31 +64,25 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.results)
     return (
       <div className="App">
-        <form onSubmit={this.performSearch}>
-          <input type='text'
-                 name='search'
-                 value={this.state.search}
-                 onChange={this.handleChange}
-                 placeholder='Enter movie title...' />
-        </form>
 
+        <Search handleChange={this.handleChange}
+                performSearch={this.performSearch}
+                search={this.state.search}
+                />
 
         <div>
-          {this.state.results.map(movie => <p>{movie.Title}</p>)}
+          {this.state.results && this.state.results.length > 0 
+                              ? this.state.results.map(movie => <Thumbnail key={Math.random()} movie={movie} />)
+                              : <p>No Results Found</p>}
         </div>
 
 
-        <div className='page-index'>
-            <span onClick={this.decrementPage}> &#x2039; </span>
-
-            <ul>
-              {this.state.pageList.map(pageNum => <li key={pageNum} onClick={this.selectPage}>{pageNum}</li>)}
-            </ul>
-
-            <span onClick={this.incrementPage}> &#x203A; </span>
-        </div>
+        <PageSelect performSearch={this.performSearch}
+                    page={this.state.page}
+                    pageList={this.state.pageList}/>
       </div>
     );
   }
