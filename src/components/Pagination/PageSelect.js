@@ -19,7 +19,7 @@ const PageSelect = props => {
             <span onClick={decrementPage}> &#x2039; </span>
 
             <ul>
-            {   props.pageList.map(pageNum => <li key={pageNum} onClick={selectPage}>{pageNum}</li>)}
+                { props.pageList.map(pageNum => <li key={pageNum} onClick={selectPage}>{pageNum}</li>) }
             </ul>
 
             <span onClick={incrementPage}> &#x203A; </span>
