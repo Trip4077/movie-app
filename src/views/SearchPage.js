@@ -16,7 +16,7 @@ class SearchPage extends Component {
       page: 1,
       pageList: [],
       totalMovies: 0,
-      results: []
+      results: [],
     }
   }
 
@@ -65,7 +65,7 @@ class SearchPage extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="search">
 
         <Search handleChange={this.handleChange}
                 performSearch={this.performSearch}

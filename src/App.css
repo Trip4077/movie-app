@@ -31,3 +31,9 @@
     transform: rotate(360deg);
   }
 }
+
+.thumbnail {
+  border: 1px solid red;
+  width: 30%;
+  cursor: pointer;
+}
