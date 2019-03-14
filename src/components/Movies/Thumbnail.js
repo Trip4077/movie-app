@@ -6,20 +6,16 @@ import { updateMovieList } from '../../actions';
 
 const Thumbnail = props => {
     const addHandler = e => {
-        e.stopPropagation() 
-
         const favorites = [ ...props.favorites ];
         const present = favorites.filter(movie => movie.imdbID === props.movie.imdbID);
-        console.log(present)
+     
         if(present.length > 0) return;
-        console.log('pass')
+       
         favorites.push(props.movie);
         props.updateMovieList(favorites);
     }
 
     const removeHandler = e => {
-        e.stopPropagation() 
-
         const favorites = [ ...props.favorites ];
         favorites.filter((movie, index) => {
             if(movie.imdbID === props.movie.imdbID) {

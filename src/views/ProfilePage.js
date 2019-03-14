@@ -1,9 +1,14 @@
 import React from 'react';
+import MovieList from '../components/Movies/MovieList';
+
 import { connect } from 'react-redux';
 
 const ProfilePage = props => {
     return(
-        <h1>Profile</h1>
+        <div className='profile'>
+            <h1>Profile</h1>
+            <MovieList results={props.favorites} />
+        </div>
     );
 }
 
