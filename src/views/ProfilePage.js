@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const ProfilePage = props => {
     return(
@@ -6,4 +7,10 @@ const ProfilePage = props => {
     );
 }
 
-export default ProfilePage;
+const mstp = state => {
+    return {
+        favorites: state.movieReducer.favorites
+    }
+}
+
+export default connect(mstp, {})(ProfilePage);
