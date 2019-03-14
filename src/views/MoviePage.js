@@ -30,7 +30,7 @@ class MoviePage extends React.Component {
                 <p>Runtime: {this.state.movieData.Runtime}</p>
                 <p>Synopsis: {this.state.movieData.Plot}</p>
                 <p>Genre: {this.state.movieData.Genre}</p>
-                <p>Production: {this.state.movieData.Prodction}</p>
+                <p>Production: {this.state.movieData.Production}</p>
             </div>
         );
     }
