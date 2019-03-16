@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
+import MovieInfo from '../components/Movies/MovieInfo';
 
 import { connect } from 'react-redux';
 import { scheduleMovie } from '../actions';
@@ -61,15 +62,7 @@ class MoviePage extends React.Component {
     render() {
         return(
             <div>
-                <p>TItle: {this.state.movieData.Title}</p>
-                <p>Cast: {this.state.movieData.Actors}</p>
-                <p>BoxOffice: {this.state.movieData.BoxOffice}</p>
-                <p>Release Date: {this.state.movieData.Released}</p>
-                <p>Rating: {this.state.movieData.Rated}</p>
-                <p>Runtime: {this.state.movieData.Runtime}</p>
-                <p>Synopsis: {this.state.movieData.Plot}</p>
-                <p>Genre: {this.state.movieData.Genre}</p>
-                <p>Production: {this.state.movieData.Production}</p>
+                <MovieInfo movie={this.state.movieData} />
                 
                 <input type='text'
                        name='time'
