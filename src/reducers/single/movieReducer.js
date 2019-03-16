@@ -1,7 +1,7 @@
 import {
     LOADING,
     UPDATE_FAV_LIST,
-    SCHEDULE_MOVIE
+    UPDATE_SCHEDULE
 } from '../../actions';
 
 const initialState = {
@@ -25,7 +25,7 @@ export const movieReducer = (state = initialState, action) => {
                 schedule: state.schedule
             }
 
-        case SCHEDULE_MOVIE:
+        case UPDATE_SCHEDULE:
             return {
                 loading: false,
                 favorites: state.favorites,

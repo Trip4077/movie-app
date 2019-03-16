@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import MovieInfo from '../components/Movies/MovieInfo';
 
 import { connect } from 'react-redux';
-import { scheduleMovie } from '../actions';
+import { updateSchedule } from '../actions';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -47,7 +47,7 @@ class MoviePage extends React.Component {
 
         console.log(movie)
         console.log(newSchedule)
-        this.props.scheduleMovie(newSchedule)
+        this.props.updateSchedule(newSchedule)
     }
 
     componentDidMount() {
@@ -92,4 +92,4 @@ const mstp = state => {
     }
 }
 
-export default connect(mstp, { scheduleMovie })(MoviePage);
+export default connect(mstp, { updateSchedule })(MoviePage);
