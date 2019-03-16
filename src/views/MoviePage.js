@@ -2,6 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 
+import { connect } from 'react-redux';
+import { scheduleMovie } from '../actions';
+
 import "react-datepicker/dist/react-datepicker.css";
 
 class MoviePage extends React.Component {
@@ -14,12 +17,11 @@ class MoviePage extends React.Component {
             movieData: {},
             startDate: today,
             time: `${today.getHours()}:${today.getMinutes()}`,
-            daypart: 'pm'
+            daypart: 'AM'
         }
     }
 
     selectDate = date => {
-        console.log(date)
         this.setState({
             startDate: date
         })
@@ -39,7 +41,12 @@ class MoviePage extends React.Component {
             time: `${this.state.time} ${this.state.daypart.toLowerCase()}`
         }
 
+        const newSchedule = [ ...this.props.movieLists.schedule ]
+        newSchedule.push(movie)
+
         console.log(movie)
+        console.log(newSchedule)
+        this.props.scheduleMovie(newSchedule)
     }
 
     componentDidMount() {
@@ -86,4 +93,10 @@ class MoviePage extends React.Component {
     }
 }
 
-export default MoviePage;
+const mstp = state => {
+    return {
+        movieLists: { ...state.movieReducer }
+    }
+}
+
+export default connect(mstp, { scheduleMovie })(MoviePage);
