@@ -8,16 +8,38 @@ class MoviePage extends React.Component {
     constructor(props) {
         super(props);
 
+        const today = new Date()
+
         this.state = {
             movieData: {},
-            startDate: new Date()
+            startDate: today,
+            time: `${today.getHours()}:${today.getMinutes()}`,
+            daypart: 'pm'
         }
     }
 
-    handleChange = (date) => {
+    selectDate = date => {
+        console.log(date)
         this.setState({
             startDate: date
+        })
+    }
+
+    handleChange = e => {
+        this.setState({
+            ...this.state,
+        [e.target.name]: e.target.value
         });
+    }
+
+    scheduleDate = () => {
+        const movie = {
+            info: this.state.movieData,
+            date: this.state.startDate.toDateString(), 
+            time: `${this.state.time} ${this.state.daypart.toLowerCase()}`
+        }
+
+        console.log(movie)
     }
 
     componentDidMount() {
@@ -41,10 +63,24 @@ class MoviePage extends React.Component {
                 <p>Synopsis: {this.state.movieData.Plot}</p>
                 <p>Genre: {this.state.movieData.Genre}</p>
                 <p>Production: {this.state.movieData.Production}</p>
+                
+                <input type='text'
+                       name='time'
+                       onChange={this.handleChange}
+                       value={this.state.time}
+                       />
+
+                <select onChange={this.handleChange} value={this.state.daypart} name='daypart'>
+                    <option>AM</option>
+                    <option>PM</option>
+                </select>
+
                 <DatePicker
                     selected={this.state.startDate}
-                    onChange={this.handleChange}
+                    onChange={this.selectDate}
                 />
+
+                <button onClick={this.scheduleDate}>Schedule</button>
             </div>
         );
     }
