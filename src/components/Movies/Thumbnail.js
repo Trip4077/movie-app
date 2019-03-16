@@ -41,7 +41,7 @@ const Thumbnail = props => {
             </Link>
 
             <div className='thumbnail__btns'>
-                <button onClick={addHandler}>Add Movie</button>
+                { !props.profile ? <button onClick={addHandler}>Add Movie</button> : null }
                 <button onClick={removeHandler}>Remove Movie</button>
             </div>
         </div>

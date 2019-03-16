@@ -1,13 +1,23 @@
 import React from 'react';
 import axios from 'axios';
+import DatePicker from 'react-datepicker';
+
+import "react-datepicker/dist/react-datepicker.css";
 
 class MoviePage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            movieData: {}
+            movieData: {},
+            startDate: new Date()
         }
+    }
+
+    handleChange = (date) => {
+        this.setState({
+            startDate: date
+        });
     }
 
     componentDidMount() {
@@ -31,6 +41,10 @@ class MoviePage extends React.Component {
                 <p>Synopsis: {this.state.movieData.Plot}</p>
                 <p>Genre: {this.state.movieData.Genre}</p>
                 <p>Production: {this.state.movieData.Production}</p>
+                <DatePicker
+                    selected={this.state.startDate}
+                    onChange={this.handleChange}
+                />
             </div>
         );
     }
