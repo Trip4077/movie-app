@@ -2,18 +2,29 @@ import React from 'react';
 import MovieList from '../components/Movies/MovieList';
 
 import { connect } from 'react-redux';
+import { getFavorites } from '../actions';
 
-const ProfilePage = props => {
-    return(
-        <div className='profile'>
-            <h1>Profile</h1>
-            <h2>Favorites</h2>
-            <MovieList results={props.favorites} profile />
+class ProfilePage extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
-            <h2>Schedule</h2>
-            <MovieList results={props.schedule} profile />
-        </div>
-    );
+    componentDidMount() {
+        this.props.getFavorites(1)
+    }
+
+    render() {
+        return(
+            <div className='profile'>
+                <h1>Profile</h1>
+                <h2>Favorites</h2>
+                <MovieList results={this.props.favorites} profile />
+    
+                <h2>Schedule</h2>
+                <MovieList results={this.props.schedule} profile />
+            </div>
+        );
+    }
 }
 
 const mstp = state => {
@@ -23,4 +34,4 @@ const mstp = state => {
     }
 }
 
-export default connect(mstp, {})(ProfilePage);
+export default connect(mstp, { getFavorites })(ProfilePage);

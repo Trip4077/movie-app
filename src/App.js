@@ -12,7 +12,6 @@ import Navbar from './components/Navigation/Navbar';
 
 import { Route } from 'react-router-dom';
 
-
 class App extends Component {
   render() {
     return (
