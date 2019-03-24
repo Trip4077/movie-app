@@ -7,7 +7,6 @@ const MovieList = props => {
         <div className='movie-list'>
             {props.results && props.results.length > 0 
                            ? props.results.map(movie => {
-                               console.log(movie)
                                if(movie.info) {
                                    return <MovieSchedule key={Math.random()} 
                                                          movie={movie} />

@@ -7,10 +7,12 @@ import { updateSchedule } from '../../actions';
 const MovieSchedule = props => {
     const removeHandler = e => {
         const schedule = [ ...props.schedule ];
+        
         schedule.filter((movie, index) => {
+
             if(movie.date === props.movie.date
-                          && movie.time === props.movie.time
-                          && movie.info.Title === props.movie.info.Title) {
+               && movie.time === props.movie.time
+               && movie.info.Title === props.movie.info.Title) {
 
                 return schedule.splice(index, 1)
             }
