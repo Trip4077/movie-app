@@ -16,7 +16,7 @@ export const addFavorite = movie => dispatch => {
             dispatch({ type: ADD_FAVORITE });
             
             /* Update All Trips after Addition */
-            axios.get(`http://localhost:4321/api/favorites`)
+            axios.get(`http://localhost:4321/api/favorites/trip1701/1`)
                  .then(res => dispatch({ type: UPDATE_FAV_LIST, payload: res.data }))
                  .catch(err => console.log(err))
          })
