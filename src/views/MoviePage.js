@@ -37,16 +37,16 @@ class MoviePage extends React.Component {
 
     scheduleDate = () => {
         const movie = {
-            info: this.state.movieData,
-            date: this.state.startDate.toDateString(), 
-            time: `${this.state.time} ${this.state.daypart.toLowerCase()}`
+            readDate: this.state.startDate.toDateString(), 
+            compareDate: this.state.startDate,
+            time: `${this.state.time} ${this.state.daypart.toLowerCase()}`,
+            title: this.state.movieData.Title
         }
 
         const newSchedule = [ ...this.props.movieLists.schedule ]
         newSchedule.push(movie)
 
         console.log(movie)
-        console.log(newSchedule)
         this.props.updateSchedule(newSchedule)
     }
 
