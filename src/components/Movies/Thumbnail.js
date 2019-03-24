@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addFavorite } from '../../actions';
+import { addFavorite, deleteFavorite } from '../../actions';
 
 const Thumbnail = props => {
     const addHandler = e => {
@@ -11,14 +11,7 @@ const Thumbnail = props => {
     }
 
     const removeHandler = e => {
-        const favorites = [ ...props.favorites ];
-        favorites.filter((movie, index) => {
-            if(movie.imdbID === props.movie.imdbID) {
-                return favorites.splice(index, 1)
-            }
-        })
-
-        props.updateMovieList(favorites);
+        props.deleteFavorite(1, 1);
     }
 
     return(
@@ -47,4 +40,4 @@ const mstp = state => {
     return { ...state.movieReducer }
 }
 
-export default connect(mstp,{ addFavorite })(Thumbnail);
+export default connect(mstp,{ addFavorite, deleteFavorite })(Thumbnail);
