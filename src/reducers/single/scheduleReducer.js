@@ -3,7 +3,6 @@ import {
     UPDATE_SCHEDULE,
     END_LOAD
 } from '../../actions';
-import { AST_EmptyStatement } from 'terser';
 
 const initialState = {
     loading: false,

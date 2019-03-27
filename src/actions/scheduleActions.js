@@ -12,6 +12,20 @@ export const getSchedule = id => dispatch => {
          .catch(err => console.log(err));
 }
 
+export const schedule = movie => dispatch => {
+    const movieData = {
+        ...movie,
+        user_id: 1
+    }
+
+    console.log(movieData);
+    axios.post(`http://localhost:4321/api/schedule`, movieData)
+         .then(res => {
+             dispatch({ type: UPDATE_SCHEDULE, payload: res.data })
+         })
+         .catch(err => console.log(err));
+}
+
 export const updateSchedule = updatedFavorites => dispatch => {
     dispatch({ type: UPDATE_SCHEDULE, payload: updatedFavorites });
 }

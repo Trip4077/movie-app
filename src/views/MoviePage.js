@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import MovieInfo from '../components/Movies/MovieInfo';
 
 import { connect } from 'react-redux';
-import { updateSchedule } from '../actions';
+import { schedule } from '../actions';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -37,17 +37,16 @@ class MoviePage extends React.Component {
 
     scheduleDate = () => {
         const movie = {
-            readDate: this.state.startDate.toDateString(), 
-            compareDate: this.state.startDate,
-            time: `${this.state.time} ${this.state.daypart.toLowerCase()}`,
-            title: this.state.movieData.Title
+            date: this.state.startDate.toDateString(), 
+            compareTime: JSON.stringify(this.state.startDate),
+            readTime: `${this.state.time} ${this.state.daypart.toLowerCase()}`,
+            title: this.state.movieData.Title,
+            imdb: this.state.movieData.imdbID,
+            user_id: 1
         }
 
-        const newSchedule = [ ...this.props.movieLists.schedule ]
-        newSchedule.push(movie)
-
         console.log(movie)
-        this.props.updateSchedule(newSchedule)
+        this.props.schedule(movie)
     }
 
     componentDidMount() {
@@ -93,4 +92,4 @@ const mstp = state => {
     }
 }
 
-export default connect(mstp, { updateSchedule })(MoviePage);
+export default connect(mstp, { schedule })(MoviePage);
