@@ -1,21 +1,22 @@
 import {
     LOADING,
-    UPDATE_FAV_LIST,
+    UPDATE_SCHEDULE,
     END_LOAD
 } from '../../actions';
+import { AST_EmptyStatement } from 'terser';
 
 const initialState = {
     loading: false,
-    favorites: [],
+    schedule: [],
 }
 
-export const movieReducer = (state = initialState, action) => {
+export const scheduleReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOADING:
-            return {
-                ...state,
-                loading: true
-            }
+        return {
+            ...state,
+            loading: true
+        }
 
         case END_LOAD:
             return {
@@ -23,11 +24,11 @@ export const movieReducer = (state = initialState, action) => {
                 loading: false
             }
 
-        case UPDATE_FAV_LIST:
+        case UPDATE_SCHEDULE:
             return {
                 loading: false,
-                favorites: action.payload,
-                schedule: state.schedule
+                favorites: state.favorites,
+                schedule: action.payload
             }
 
         default:

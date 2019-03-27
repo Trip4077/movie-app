@@ -2,12 +2,13 @@ import axios from 'axios';
 
 export const LOADING = 'LOADING';
 export const UPDATE_FAV_LIST = 'UPDATE_FAV_LIST';
-export const UPDATE_SCHEDULE = 'UPDATE_SCHEDULE';
 export const END_LOAD = 'END_LOAD';
 
 
 export const getFavorites = id => dispatch => {
-    axios.get(`http://localhost:4321/api/favorites/trip1701/${id}`)
+    const username = 'trip1701';
+
+    axios.get(`http://localhost:4321/api/favorites/${username}/${id}`)
         .then(res => dispatch({ type: UPDATE_FAV_LIST, payload: res.data }))
         .catch(err => console.log(err))
 }
@@ -43,8 +44,4 @@ export const deleteFavorite = (id, userID) => dispatch => {
 
 export const updateMovieList = updatedFavorites => dispatch => {
     dispatch({ type: UPDATE_FAV_LIST, payload: updatedFavorites });
-}
-
-export const updateSchedule = updatedSchedule => dispatch => {
-    dispatch({ type: UPDATE_SCHEDULE, payload: updatedSchedule })
 }

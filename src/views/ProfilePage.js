@@ -2,7 +2,7 @@ import React from 'react';
 import MovieList from '../components/Movies/MovieList';
 
 import { connect } from 'react-redux';
-import { getFavorites } from '../actions';
+import { getFavorites, getSchedule } from '../actions';
 
 class ProfilePage extends React.Component {
     constructor(props) {
@@ -11,6 +11,7 @@ class ProfilePage extends React.Component {
 
     componentDidMount() {
         this.props.getFavorites(1)
+        this.props.getSchedule(1);
     }
 
     render() {
@@ -28,10 +29,11 @@ class ProfilePage extends React.Component {
 }
 
 const mstp = state => {
+    console.log(state)
     return {
         favorites: state.movieReducer.favorites,
-        schedule: state.movieReducer.schedule
+        schedule: state.scheduleReducer.schedule
     }
 }
 
-export default connect(mstp, { getFavorites })(ProfilePage);
+export default connect(mstp, { getFavorites, getSchedule })(ProfilePage);

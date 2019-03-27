@@ -88,7 +88,8 @@ class MoviePage extends React.Component {
 
 const mstp = state => {
     return {
-        movieLists: { ...state.movieReducer }
+        movieLists: { ...state.movieReducer },
+        schedule: { ...state.scheduleReducer }
     }
 }
 
