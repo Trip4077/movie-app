@@ -22,10 +22,6 @@ export const addFavorite = movie => dispatch => {
     axios.post(`http://localhost:4321/api/favorites/`, movieData)
          .then( res => {
             dispatch({ type: END_LOAD });
-            
-            axios.get(`http://localhost:4321/api/favorites/trip1701/${movieData.user_id}`)
-                 .then(res => dispatch({ type: UPDATE_FAV_LIST, payload: res.data }))
-                 .catch(err => console.log(err))
          })
          .catch(err => console.log(err));
 }
