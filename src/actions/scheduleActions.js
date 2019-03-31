@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const UPDATE_SCHEDULE = 'UPDATE_SCHEDULE';
+export const TEXT_SENT = 'TEXT_SENT'; 
 export const LOADING = 'LOADING';
 export const END_LOAD = 'END_LOAD';
 
@@ -18,7 +19,6 @@ export const schedule = movie => dispatch => {
         user_id: 1
     }
 
-    console.log(movieData);
     axios.post(`http://localhost:4321/api/schedule`, movieData)
          .then(res => {
              dispatch({ type: UPDATE_SCHEDULE, payload: res.data })
@@ -36,6 +36,16 @@ export const deleteScheduled = id => dispatch => {
                  .catch(err => console.log(err));            
         })
         .catch(err => {
+            console.log(err)
+        })
+}
+
+export const sendSms = textInfo => dispatch => {
+    axios.post('http://localhost:4321/api/schedule/send', textInfo)
+        .then(res => {
+            console.log(res)
+            dispatch({ type: TEXT_SENT, payload: res.data })
+        }).catch(err => {
             console.log(err)
         })
 }

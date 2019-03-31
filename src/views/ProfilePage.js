@@ -2,7 +2,7 @@ import React from 'react';
 import MovieList from '../components/Movies/MovieList';
 
 import { connect } from 'react-redux';
-import { getFavorites, getSchedule } from '../actions';
+import { getFavorites, getSchedule, sendSms } from '../actions';
 
 class ProfilePage extends React.Component {
     constructor(props) {
@@ -12,6 +12,21 @@ class ProfilePage extends React.Component {
     componentDidMount() {
         this.props.getFavorites(1)
         this.props.getSchedule(1);
+        console.log(this.props)
+    }
+
+    send = e => {
+        e.preventDefault();
+
+        const movie = this.props.schedule[0]
+
+        const textInfo = {
+            text: `${movie.title} is scheduled at ${movie.readTime} on ${movie.date}`,
+            number: '12764691994'
+        }
+        
+        console.log(textInfo)
+        this.props.sendSms(textInfo)
     }
 
     render() {
@@ -23,6 +38,8 @@ class ProfilePage extends React.Component {
     
                 <h2>Schedule</h2>
                 <MovieList results={this.props.schedule} profile />
+
+                <button onClick={this.send}>Text</button>
             </div>
         );
     }
@@ -36,4 +53,4 @@ const mstp = state => {
     }
 }
 
-export default connect(mstp, { getFavorites, getSchedule })(ProfilePage);
+export default connect(mstp, { getFavorites, getSchedule, sendSms })(ProfilePage);

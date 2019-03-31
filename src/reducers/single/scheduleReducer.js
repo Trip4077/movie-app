@@ -1,6 +1,7 @@
 import {
     LOADING,
     UPDATE_SCHEDULE,
+    TEXT_SENT,
     END_LOAD
 } from '../../actions';
 
@@ -28,6 +29,12 @@ export const scheduleReducer = (state = initialState, action) => {
                 loading: false,
                 favorites: state.favorites,
                 schedule: action.payload
+            }
+
+        case TEXT_SENT:
+            return {
+                ...state,
+                loading: false
             }
 
         default:
