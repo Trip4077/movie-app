@@ -1,12 +1,8 @@
 import React from 'react';
-import axios from 'axios';
-import moment from 'moment';
 import MovieList from '../components/Movies/MovieList';
 
 import { connect } from 'react-redux';
-import { getFavorites, 
-         getSchedule, 
-         sendSms } from '../actions';
+import { getFavorites, getSchedule } from '../actions';
 
 class ProfilePage extends React.Component {
     constructor(props) {
@@ -19,42 +15,6 @@ class ProfilePage extends React.Component {
         console.log(this.props)
     }
 
-    send = e => {
-        e.preventDefault();
-
-        const movie = this.props.schedule[0]
-
-        const textInfo = {
-            text: `${movie.title} is scheduled at ${movie.readTime} on ${movie.date}`,
-            number: '12764691994'
-        }
-        
-        console.log(textInfo)
-        this.props.sendSms(textInfo)
-    }
-
-    compareSchedule = e => {
-        axios.get('http://localhost:4321/api/schedule/')
-             .then(res => {
-
-                 res.data.map(schedule => {
-                     console.log(schedule)
-                     if(schedule.date === (new Date().toDateString())) {
-                         console.log(schedule.compareTime);
-                         console.log(moment().format('HH:mm'))
-                         if(schedule.compareTime === moment().format('HH:mm')) {
-                             
-                         } else {
-                             console.log(false);
-                         }
-                     } else {
-                         console.log(false);
-                     }
-                 })
-             })
-             .catch(err => console.log(err));
-    }
-
     render() {
         return(
             <div className='profile'>
@@ -64,9 +24,6 @@ class ProfilePage extends React.Component {
     
                 <h2>Schedule</h2>
                 <MovieList results={this.props.schedule} profile />
-
-                <button onClick={this.send}>Text</button>
-                <button onClick={this.compareSchedule}>Compare</button>
             </div>
         );
     }
@@ -80,6 +37,4 @@ const mstp = state => {
     }
 }
 
-export default connect(mstp, { getFavorites, 
-                               getSchedule,
-                               sendSms })(ProfilePage);
+export default connect(mstp, { getFavorites, getSchedule })(ProfilePage);
