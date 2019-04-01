@@ -1,8 +1,11 @@
 import React from 'react';
+import axios from 'axios';
 import MovieList from '../components/Movies/MovieList';
 
 import { connect } from 'react-redux';
-import { getFavorites, getSchedule, sendSms } from '../actions';
+import { getFavorites, 
+         getSchedule, 
+         sendSms } from '../actions';
 
 class ProfilePage extends React.Component {
     constructor(props) {
@@ -29,6 +32,24 @@ class ProfilePage extends React.Component {
         this.props.sendSms(textInfo)
     }
 
+    compareSchedule = e => {
+        axios.get('http://localhost:4321/api/schedule/')
+             .then(res => {
+
+                 res.data.map(schedule => {
+                     console.log(schedule)
+                     if(schedule.date === (new Date().toDateString())) {
+                         console.log(true);
+                         console.log(schedule.compareTime)
+                         console.log(JSON.stringify(new Date()),)
+                     } else {
+                         console.log(false);
+                     }
+                 })
+             })
+             .catch(err => console.log(err));
+    }
+
     render() {
         return(
             <div className='profile'>
@@ -40,6 +61,7 @@ class ProfilePage extends React.Component {
                 <MovieList results={this.props.schedule} profile />
 
                 <button onClick={this.send}>Text</button>
+                <button onClick={this.compareSchedule}>Compare</button>
             </div>
         );
     }
@@ -53,4 +75,6 @@ const mstp = state => {
     }
 }
 
-export default connect(mstp, { getFavorites, getSchedule, sendSms })(ProfilePage);
+export default connect(mstp, { getFavorites, 
+                               getSchedule,
+                               sendSms })(ProfilePage);
