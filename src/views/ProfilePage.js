@@ -42,6 +42,11 @@ class ProfilePage extends React.Component {
                      if(schedule.date === (new Date().toDateString())) {
                          console.log(schedule.compareTime);
                          console.log(moment().format('HH:mm'))
+                         if(schedule.compareTime === moment().format('HH:mm')) {
+                             
+                         } else {
+                             console.log(false);
+                         }
                      } else {
                          console.log(false);
                      }
