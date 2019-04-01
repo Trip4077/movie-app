@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
+import TimePicker from 'rc-time-picker';
 import MovieInfo from '../components/Movies/MovieInfo';
 
 import { connect } from 'react-redux';
 import { schedule } from '../actions';
 
 import "react-datepicker/dist/react-datepicker.css";
+import 'rc-time-picker/assets/index.css';
 
 class MoviePage extends React.Component {
     constructor(props) {
@@ -18,7 +20,6 @@ class MoviePage extends React.Component {
             movieData: {},
             startDate: today,
             time: `${today.getHours()}:${today.getMinutes()}`,
-            daypart: 'AM'
         }
     }
 
@@ -28,18 +29,15 @@ class MoviePage extends React.Component {
         })
     }
 
-    handleChange = e => {
-        this.setState({
-            ...this.state,
-        [e.target.name]: e.target.value
-        });
+    selectTime = value => {
+        this.setState({ time: value.format('HH:mm') })
     }
 
     scheduleDate = () => {
         const movie = {
             date: this.state.startDate.toDateString(), 
-            compareTime: JSON.stringify(this.state.startDate),
-            readTime: `${this.state.time} ${this.state.daypart.toLowerCase()}`,
+            compareTime: this.state.time,
+            readTime: this.state.time,
             title: this.state.movieData.Title,
             imdb: this.state.movieData.imdbID,
             user_id: 1
@@ -62,17 +60,13 @@ class MoviePage extends React.Component {
         return(
             <div>
                 <MovieInfo movie={this.state.movieData} />
-                
-                <input type='text'
-                       name='time'
-                       onChange={this.handleChange}
-                       value={this.state.time}
-                       />
 
-                <select onChange={this.handleChange} value={this.state.daypart} name='daypart'>
-                    <option>AM</option>
-                    <option>PM</option>
-                </select>
+                <TimePicker placeholder='Select Time'
+                            use12Hours 
+                            className='xxx'
+                            name='time'
+                            onChange={this.selectTime}
+                            />
 
                 <DatePicker
                     selected={this.state.startDate}

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import MovieList from '../components/Movies/MovieList';
 
 import { connect } from 'react-redux';
@@ -39,9 +40,8 @@ class ProfilePage extends React.Component {
                  res.data.map(schedule => {
                      console.log(schedule)
                      if(schedule.date === (new Date().toDateString())) {
-                         console.log(true);
-                         console.log(schedule.compareTime)
-                         console.log(JSON.stringify(new Date()),)
+                         console.log(schedule.compareTime);
+                         console.log(moment().format('HH:mm'))
                      } else {
                          console.log(false);
                      }
