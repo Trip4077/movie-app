@@ -40,15 +40,16 @@ class MoviePage extends React.Component {
             readTime: this.state.time,
             title: this.state.movieData.Title,
             imdb: this.state.movieData.imdbID,
-            user_id: 1
+            user_id: this.props.user.id
         }
 
         console.log(movie)
-        this.props.schedule(movie)
+        this.props.schedule(movie);
     }
 
     componentDidMount() {
-        axios.get(`http://www.omdbapi.com/?i=${this.props.match.params.id}&plot=full&apikey=db6f6716`)
+        const id = this.props.match.params.id
+        axios.get(`http://www.omdbapi.com/?i=${id}&plot=full&apikey=db6f6716`)
              .then(res => {
                  this.setState({ movieData: res.data })
              }).catch(err => {
@@ -82,7 +83,8 @@ class MoviePage extends React.Component {
 const mstp = state => {
     return {
         movieLists: { ...state.movieReducer },
-        schedule: { ...state.scheduleReducer }
+        schedule: { ...state.scheduleReducer },
+        user: state.userReducer.user
     }
 }
 

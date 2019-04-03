@@ -13,24 +13,19 @@ export const getSchedule = (id, username) => dispatch => {
 }
 
 export const schedule = movie => dispatch => {
-    const movieData = {
-        ...movie,
-        user_id: 1
-    }
-
-    axios.post(`http://localhost:4321/api/schedule`, movieData)
+    axios.post(`http://localhost:4321/api/schedule`, movie)
          .then(res => {
              dispatch({ type: UPDATE_SCHEDULE, payload: res.data })
          })
          .catch(err => console.log(err));
 }
 
-export const deleteScheduled = id => dispatch => {
+export const deleteScheduled = (id, username) => dispatch => {
     axios.delete(`http://localhost:4321/api/schedule/${id}`)
         .then(res => {
             dispatch({ type: END_LOAD });
 
-            axios.get(`http://localhost:4321/api/schedule/trip1701/${id}`)
+            axios.get(`http://localhost:4321/api/schedule/${username}/${id}`)
                  .then(res => dispatch({ type: UPDATE_SCHEDULE, payload: res.data }))
                  .catch(err => console.log(err));            
         })
