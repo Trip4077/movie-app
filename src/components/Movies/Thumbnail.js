@@ -11,7 +11,7 @@ const Thumbnail = props => {
     }
 
     const removeHandler = e => {
-        props.deleteFavorite(props.movie.id, 1);
+        props.deleteFavorite(props.movie.id, props.user);
     }
 
     return(

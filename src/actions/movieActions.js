@@ -24,12 +24,12 @@ export const addFavorite = (movie, id) => dispatch => {
          .catch(err => console.log(err));
 }
 
-export const deleteFavorite = (id, userID) => dispatch => {
+export const deleteFavorite = (id, user) => dispatch => {
     axios.delete(`http://localhost:4321/api/favorites/${id}`)
             .then(res => {
                 dispatch({ type: END_LOAD });
 
-                axios.get(`http://localhost:4321/api/favorites/trip1701/${userID}`)
+                axios.get(`http://localhost:4321/api/favorites/${user.username}/${user.id}`)
                     .then(res => dispatch({ type: UPDATE_FAV_LIST, payload: res.data }))
                     .catch(err => console.log(err))     
             })
