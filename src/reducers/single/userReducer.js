@@ -1,11 +1,13 @@
 import {
     LOADING,
     END_LOAD,
-    REGISTER
+    REGISTER,
+    LOGIN
 } from '../../actions';
 
 const initialState = {
     loading: false,
+    userID: null,
     user: {}
 }
 
@@ -26,7 +28,17 @@ export const userReducer = (state = initialState, action) => {
         case REGISTER: 
             return {
                 loading: false,
-                user: action.payload
+                userID: action.payload
+            }
+
+        case LOGIN:
+            localStorage.setItem( 'token', action.payload.token )
+
+            delete action.payload.user.password
+
+            return {
+                loading: false,
+                user: action.payload.user
             }
 
         default:

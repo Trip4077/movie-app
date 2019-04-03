@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { register } from '../actions'; 
+import { register } from '../actions';
 
 class RegisterPage extends React.Component {
     constructor(props) {
@@ -70,7 +70,7 @@ class RegisterPage extends React.Component {
                            type='text'
                            />
 
-                    <button onSubmit={this.register}>Register</button>
+                    <button onClick={ this.register }>Register</button>
                 </form>
             </div>
         );
