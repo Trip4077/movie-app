@@ -5,9 +5,8 @@ export const TEXT_SENT = 'TEXT_SENT';
 export const LOADING = 'LOADING';
 export const END_LOAD = 'END_LOAD';
 
-export const getSchedule = id => dispatch => {
-    const username = 'trip1701';
-    
+export const getSchedule = (id, username) => dispatch => {
+
     axios.get(`http://localhost:4321/api/schedule/${username}/${id}`)
          .then(res => dispatch({ type: UPDATE_SCHEDULE, payload: res.data }))
          .catch(err => console.log(err));

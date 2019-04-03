@@ -7,7 +7,7 @@ import { addFavorite, deleteFavorite } from '../../actions';
 const Thumbnail = props => {
     const addHandler = e => {
         e.preventDefault();
-        props.addFavorite(props.movie);
+        props.addFavorite(props.movie, props.user.id);
     }
 
     const removeHandler = e => {
@@ -37,7 +37,10 @@ const Thumbnail = props => {
 }
 
 const mstp = state => {
-    return { ...state.movieReducer }
+    return { 
+        ...state.movieReducer,
+        user: state.userReducer.user
+    }
 }
 
 export default connect(mstp,{ addFavorite, deleteFavorite })(Thumbnail);

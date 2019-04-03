@@ -5,18 +5,16 @@ export const UPDATE_FAV_LIST = 'UPDATE_FAV_LIST';
 export const END_LOAD = 'END_LOAD';
 
 
-export const getFavorites = id => dispatch => {
-    const username = 'trip1701';
-
+export const getFavorites = (id, username) => dispatch => {
     axios.get(`http://localhost:4321/api/favorites/${username}/${id}`)
         .then(res => dispatch({ type: UPDATE_FAV_LIST, payload: res.data }))
         .catch(err => console.log(err))
 }
 
-export const addFavorite = movie => dispatch => {
+export const addFavorite = (movie, id) => dispatch => {
     const movieData = {
         ...movie,
-        user_id: 1
+        user_id: id
     }
 
     axios.post(`http://localhost:4321/api/favorites/`, movieData)
