@@ -3,6 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import TimePicker from 'rc-time-picker';
 import MovieInfo from '../components/Movies/MovieInfo';
+import requireAuth from '../auth/requireAuth';
 
 import { connect } from 'react-redux';
 import { schedule } from '../actions';
@@ -44,13 +45,14 @@ class MoviePage extends React.Component {
         }
 
         console.log(movie)
-        this.props.schedule(movie);
+        this.props.schedule(movie, this.props.user.id);
     }
 
     componentDidMount() {
-        const id = this.props.match.params.id
-        axios.get(`http://www.omdbapi.com/?i=${id}&plot=full&apikey=db6f6716`)
+        console.log(this.props.match.params.id)
+        axios.get(`http://www.omdbapi.com/?i=${this.props.match.params.id}&plot=full&apikey=db6f6716`)
              .then(res => {
+                 console.log(res)
                  this.setState({ movieData: res.data })
              }).catch(err => {
                  console.log(err)
@@ -88,4 +90,4 @@ const mstp = state => {
     }
 }
 
-export default connect(mstp, { schedule })(MoviePage);
+export default connect(mstp, { schedule })(requireAuth(MoviePage));

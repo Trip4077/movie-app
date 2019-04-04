@@ -20,12 +20,12 @@ export const schedule = movie => dispatch => {
          .catch(err => console.log(err));
 }
 
-export const deleteScheduled = (id, username) => dispatch => {
+export const deleteScheduled = (id, user) => dispatch => {
     axios.delete(`http://localhost:4321/api/schedule/${id}`)
         .then(res => {
             dispatch({ type: END_LOAD });
 
-            axios.get(`http://localhost:4321/api/schedule/${username}/${id}`)
+            axios.get(`http://localhost:4321/api/schedule/${user.username}/${user.id}`)
                  .then(res => dispatch({ type: UPDATE_SCHEDULE, payload: res.data }))
                  .catch(err => console.log(err));            
         })

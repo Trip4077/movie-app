@@ -1,4 +1,5 @@
 import React from 'react';
+import requireAuth from '../auth/requireAuth';
 
 const BrowsePage = props => {
     return(
@@ -6,4 +7,4 @@ const BrowsePage = props => {
     );
 }
 
-export default BrowsePage;
+export default requireAuth(BrowsePage);

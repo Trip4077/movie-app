@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import MovieList from '../components/Movies/MovieList';
+import requireAuth from '../auth/requireAuth';
 
 import { connect } from 'react-redux';
 import { getFavorites, getSchedule } from '../actions';
@@ -51,4 +52,4 @@ const mstp = state => {
     }
 }
 
-export default connect(mstp, { getFavorites, getSchedule })(ProfilePage);
+export default connect(mstp, { getFavorites, getSchedule })(requireAuth(ProfilePage));

@@ -18,13 +18,14 @@ export const register = user => dispatch => {
 }
 
 export const login = user => dispatch => {
+    const endpoint = `http://localhost:4321/api/auth/login`;
 
-    axios.post(`http://localhost:4321/api/auth/login`, user)
-    .then(res => {
-        console.log(res)
-        dispatch({ type: LOGIN, payload: res.data })
-    })
-    .catch(err => {
-        console.log(err)
-    })
+    axios.post(endpoint, user) 
+        .then(res => {
+            localStorage.setItem('token', res.data.token)
+            dispatch({ type: LOGIN, payload: res.data });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }

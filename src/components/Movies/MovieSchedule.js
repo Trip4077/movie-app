@@ -7,7 +7,7 @@ const MovieSchedule = props => {
     const removeHandler = e => {
         e.preventDefault();
         
-        props.deleteScheduled(props.movie.id, props.user.username);
+        props.deleteScheduled(props.movie.id, props.user);
     }
 
     return (

@@ -5,6 +5,8 @@ import Search from '../components/Searchbar/Search';
 import PageSelect from '../components/Pagination/PageSelect';
 import MovieList from '../components/Movies/MovieList';
 
+import requireAuth from '../auth/requireAuth';
+
 
 class SearchPage extends Component {
   constructor(props) {
@@ -82,4 +84,4 @@ class SearchPage extends Component {
   }
 }
 
-export default SearchPage;
+export default requireAuth(SearchPage);
