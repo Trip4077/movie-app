@@ -2,7 +2,8 @@ import {
     LOADING,
     END_LOAD,
     REGISTER,
-    LOGIN
+    LOGIN,
+    LOGOUT
 } from '../../actions';
 
 const initialState = {
@@ -40,6 +41,9 @@ export const userReducer = (state = initialState, action) => {
                 loading: false,
                 user: action.payload.user
             }
+
+        case LOGOUT:
+            return { ...initialState }
 
         default:
             return { ...state }

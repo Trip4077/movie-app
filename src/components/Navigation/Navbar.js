@@ -1,6 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+import { logout } from '../../actions';
+
 const Navbar = props => {
     return(
         <nav>
@@ -16,11 +19,11 @@ const Navbar = props => {
                 Profile
             </NavLink>
 
-            <button>
+            <button onClick={props.logout}>
                 Log Out
             </button>
         </nav>
     );
 }
 
-export default Navbar;
+export default connect(null, { logout })(Navbar);

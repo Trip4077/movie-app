@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
 export const REGISTER = 'REGISTER';
 export const LOADING = 'LOADING';
 export const END_LOAD = 'END_LOAD';
@@ -28,4 +29,10 @@ export const login = user => dispatch => {
         .catch(err => {
             console.log(err);
         });
+}
+
+export const logout = () => dispatch => {
+    localStorage.removeItem('token');
+
+    dispatch({ type: LOGOUT })
 }
