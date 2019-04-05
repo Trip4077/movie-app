@@ -5,7 +5,7 @@ import Search from '../components/Searchbar/Search';
 import PageSelect from '../components/Pagination/PageSelect';
 import MovieList from '../components/Movies/MovieList';
 
-import requireAuth from '../auth/requireAuth';
+import removeAuth from '../auth/removeAuth';
 
 
 class SearchPage extends Component {
@@ -34,7 +34,8 @@ class SearchPage extends Component {
     const searchTerm = this.state.search;
 
     if (page > lastPage || page < 1) return;
-    
+
+
     axios.get(`http://www.omdbapi.com/?s=${searchTerm}&plot=${this.state.plot}&page=${page}&apikey=db6f6716`, {
       params: { newpage: page }
     })
@@ -84,4 +85,4 @@ class SearchPage extends Component {
   }
 }
 
-export default requireAuth(SearchPage);
+export default SearchPage;

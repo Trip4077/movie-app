@@ -6,7 +6,8 @@ axios.defaults.baseURL = 'http://localhost:5050/api/users';
 axios.interceptors.request.use(
     function(options) {
         console.log(options)
-        options.headers.authorization = localStorage.getItem('token');
+        delete options.headers.authorization;
+
         return options;
     },
 
@@ -19,7 +20,6 @@ export default (Component)  => {
     return class Authenticated extends React.Component {
         render() {
             const token = localStorage.getItem('token');
-
             return <>
                         { token ? <Component { ...this.props } /> 
                                 : this.props.history.push('/') }
