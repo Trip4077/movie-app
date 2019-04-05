@@ -26,7 +26,7 @@ export const login = user => dispatch => {
             localStorage.setItem('username', res.data.user.username);
             localStorage.setItem('UID', res.data.user.id);
             localStorage.setItem('token', res.data.token);
-            
+
             dispatch({ type: LOGIN, payload: res.data });
         })
         .catch(err => {
@@ -35,6 +35,8 @@ export const login = user => dispatch => {
 }
 
 export const logout = () => dispatch => {
+    localStorage.removeItem('username');
+    localStorage.removeItem('UID');
     localStorage.removeItem('token');
 
     dispatch({ type: LOGOUT })
