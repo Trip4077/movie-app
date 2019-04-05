@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../actions';
 
@@ -25,6 +26,7 @@ class Login extends React.Component {
         const user = { ...this.state }
         
         this.props.login(user);
+        this.props.history.push('/profile');
     }
 
     render() {
@@ -54,4 +56,4 @@ class Login extends React.Component {
     }
 }
 
-export default connect(null, { login })(Login);
+export default connect(null, { login })(withRouter(Login));
