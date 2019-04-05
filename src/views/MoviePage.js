@@ -49,8 +49,9 @@ class MoviePage extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.id)
-        axios.get(`http://www.omdbapi.com/?i=${this.props.match.params.id}&plot=full&apikey=db6f6716`)
+        const imdbID = this.props.match.params.id;
+
+        axios.get(`http://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=db6f6716`)
              .then(res => {
                  console.log(res)
                  this.setState({ movieData: res.data })
