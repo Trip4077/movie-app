@@ -1,12 +1,11 @@
 import React from 'react';
-import axios from 'axios';
+
 import DatePicker from 'react-datepicker';
 import TimePicker from 'rc-time-picker';
 import MovieInfo from '../components/Movies/MovieInfo';
-import requireAuth from '../auth/requireAuth';
 
 import { connect } from 'react-redux';
-import { schedule } from '../actions';
+import { schedule, getInfo } from '../actions';
 
 import "react-datepicker/dist/react-datepicker.css";
 import 'rc-time-picker/assets/index.css';
@@ -18,7 +17,6 @@ class MoviePage extends React.Component {
         const today = new Date()
 
         this.state = {
-            movieData: {},
             startDate: today,
             time: `${today.getHours()}:${today.getMinutes()}`,
         }
@@ -39,31 +37,24 @@ class MoviePage extends React.Component {
             date: this.state.startDate.toDateString(), 
             compareTime: this.state.time,
             readTime: this.state.time,
-            title: this.state.movieData.Title,
-            imdb: this.state.movieData.imdbID,
+            title: this.props.info.Title,
+            imdb: this.props.info.imdbID,
             user_id: this.props.user.id
         }
 
-        console.log(movie)
         this.props.schedule(movie, this.props.user.id);
     }
 
     componentDidMount() {
         const imdbID = this.props.match.params.id;
 
-        axios.get(`http://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=db6f6716`)
-             .then(res => {
-                 console.log(res)
-                 this.setState({ movieData: res.data })
-             }).catch(err => {
-                 console.log(err)
-             })
+        this.props.getInfo(imdbID);
     }
 
     render() {
         return(
             <div>
-                <MovieInfo movie={this.state.movieData} />
+                { this.props.info.Title ? <MovieInfo movie={this.props.info} /> : undefined }
 
                 <TimePicker placeholder='Select Time'
                             use12Hours 
@@ -87,8 +78,9 @@ const mstp = state => {
     return {
         movieLists: { ...state.movieReducer },
         schedule: { ...state.scheduleReducer },
+        info: { ...state.movieReducer.info },
         user: state.userReducer.user
     }
 }
 
-export default connect(mstp, { schedule })(requireAuth(MoviePage));
+export default connect(mstp, { schedule, getInfo })(MoviePage);

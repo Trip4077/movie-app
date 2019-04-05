@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import MovieList from '../components/Movies/MovieList';
 import requireAuth from '../auth/requireAuth';
 
@@ -7,12 +6,6 @@ import { connect } from 'react-redux';
 import { getFavorites, getSchedule } from '../actions';
 
 class ProfilePage extends React.Component {
-    constructor(props) {
-        super(props);
-
-
-    }
-
     componentDidMount() {
         const id = localStorage.getItem('UID');
         const username = localStorage.getItem('username');

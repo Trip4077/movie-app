@@ -5,7 +5,6 @@ axios.defaults.baseURL = 'http://localhost:5050/api/users';
 
 axios.interceptors.request.use(
     function(options) {
-        console.log(options)
         options.headers.authorization = localStorage.getItem('token');
         return options;
     },
@@ -17,12 +16,18 @@ axios.interceptors.request.use(
 
 export default (Component)  => {
     return class Authenticated extends React.Component {
+        componentDidMount() {
+            const token = localStorage.getItem('token');
+
+            if(!token) { this.props.history.push('/') }
+        }
+
         render() {
             const token = localStorage.getItem('token');
 
             return <>
                         { token ? <Component { ...this.props } /> 
-                                : this.props.history.push('/') }
+                                : <p>Please Login</p> }
                    </>
         }
     }

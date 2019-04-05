@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const LOADING = 'LOADING';
 export const UPDATE_FAV_LIST = 'UPDATE_FAV_LIST';
+export const GET_INFO = 'GET_INFO';
 export const END_LOAD = 'END_LOAD';
 
 
@@ -34,6 +35,15 @@ export const deleteFavorite = (id, user) => dispatch => {
                     .catch(err => console.log(err))     
             })
             .catch(err => console.log(err));
+}
+
+export const getInfo = imdbID => dispatch => {
+    axios.get(`http://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=db6f6716`)
+        .then(res => {
+            dispatch({ type: GET_INFO, payload: res.data });
+        }).catch(err => {
+            console.log(err)
+        })
 }
 
 export const updateMovieList = updatedFavorites => dispatch => {

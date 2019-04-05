@@ -1,12 +1,14 @@
 import {
     LOADING,
     UPDATE_FAV_LIST,
+    GET_INFO,
     END_LOAD
 } from '../../actions';
 
 const initialState = {
     loading: false,
     favorites: [],
+    info: {}
 }
 
 export const movieReducer = (state = initialState, action) => {
@@ -28,6 +30,13 @@ export const movieReducer = (state = initialState, action) => {
                 loading: false,
                 favorites: action.payload,
                 schedule: state.schedule
+            }
+
+        case GET_INFO:
+            return {
+                ...state,
+                loading: false,
+                info: action.payload
             }
 
         default:
