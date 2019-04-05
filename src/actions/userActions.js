@@ -23,7 +23,10 @@ export const login = user => dispatch => {
 
     axios.post(endpoint, user) 
         .then(res => {
-            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('username', res.data.user.username);
+            localStorage.setItem('UID', res.data.user.id);
+            localStorage.setItem('token', res.data.token);
+            
             dispatch({ type: LOGIN, payload: res.data });
         })
         .catch(err => {

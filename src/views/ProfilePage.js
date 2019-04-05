@@ -14,17 +14,11 @@ class ProfilePage extends React.Component {
     }
 
     componentDidMount() {
-        //console.log(localStorage.getItem('token'))
-        //axios.defaults.headers.post['authorization'] = localStorage.getItem('token');
-        let  id, username;
-        console.log(this.props)
-        if('user' in this.props) {
-            id = this.props.user.id;
-            username = this.props.user.username;
-            
-            this.props.getFavorites(id, username)
-            this.props.getSchedule(id, username);
-        }
+        const id = localStorage.getItem('UID');
+        const username = localStorage.getItem('username');
+        
+        this.props.getFavorites(id, username)
+        this.props.getSchedule(id, username);
     }
 
     render() {
