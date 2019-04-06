@@ -17,13 +17,15 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        
-        <Route exact path='/' component={Login} />
-        <Route path='/register' component={RegisterPage} />
-        <Route path='/search' component={SearchPage} />
-        <Route path='/browse' component={BrowsePage} />
-        <Route path='/profile' component={ProfilePage} />
-        <Route path='/movie/:id' component={MoviePage} />
+
+        <div className='container'>
+          <Route exact path='/' component={Login} />
+          <Route path='/register' component={RegisterPage} />
+          <Route path='/search' component={SearchPage} />
+          <Route path='/browse' component={BrowsePage} />
+          <Route path='/profile' component={ProfilePage} />
+          <Route path='/movie/:id' component={MoviePage} />
+        </div>
       </div>
     );
   }

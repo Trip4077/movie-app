@@ -6,20 +6,22 @@ import { logout } from '../../actions';
 
 const Navbar = props => {
     return(
-        <nav>
-            <NavLink to="/browse" activeClassName="selected">
+        <nav className='amber nav-wrapper'>
+            <NavLink to="/browse" className='nav-link black-text waves-effect waves-red'>
                 Browse
             </NavLink>
 
-            <NavLink to="/search" activeClassName="selected">
+            <NavLink to="/search" className='nav-link black-text waves-effect waves-red'>
                 Search
             </NavLink>
 
-            <NavLink to="/profile" activeClassName="selected">
+            <NavLink to="/profile" className='nav-link black-text waves-effect waves-red'>
                 Profile
             </NavLink>
 
-            <button onClick={props.logout}>
+            <button onClick={props.logout}
+                    className='btn-flat btn-small waves-effect waves-light right'
+                    id='logout'>
                 Log Out
             </button>
         </nav>
