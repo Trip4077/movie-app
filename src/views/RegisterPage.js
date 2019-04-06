@@ -34,43 +34,69 @@ class RegisterPage extends React.Component {
     render() {
         return(
             <div>
-                <form onSubmit={ this.register }>
-                    <input placeholder='full name...'
-                           name='fullname'
-                           value={ this.state.fullname }
-                           onChange={this.handleChange}
-                           type='text'
-                           />
+                <form onSubmit={ this.register }
+                      className='form-shape grey lighten-3'>
 
-                    <input placeholder='username...'
-                           name='username'
-                           value={ this.state.username }
-                           onChange={this.handleChange}
-                           type='text'
-                           />
+                    <h2>Register</h2>
 
-                    <input placeholder='password'
-                           name='password'
-                           value={ this.state.password }
-                           onChange={this.handleChange}
-                           type='text'
-                           />
+                    <div className='input-field'>  
+                        <input id='fullname'
+                               name='fullname'
+                               value={ this.state.fullname }
+                               onChange={this.handleChange}
+                               type='text'
+                            />
 
-                    <input placeholder='age...'
-                           name='age'
-                           value={ this.state.age }
-                           onChange={this.handleChange}
-                           type='text'
-                           />
+                        <label htmlFor='fullname'>Full Name</label>
+                    </div>
 
-                    <input placeholder='phone number...'
-                           name='number'
-                           value={ this.state.number }
-                           onChange={this.handleChange}
-                           type='text'
-                           />
+                    <div className='input-field'>
+                        <input id='username'
+                               name='username'
+                               value={ this.state.username }
+                               onChange={this.handleChange}
+                               type='text'
+                             />
 
-                    <button onClick={ this.register }>Register</button>
+                        <label htmlFor='username'>Username</label>
+                    </div>
+
+                    <div className='input-field'>
+                        <input id='password'
+                               name='password'
+                               value={ this.state.password }
+                               onChange={this.handleChange}
+                               type='text'
+                            />
+
+                        <label htmlFor='password'>Password</label>
+                    </div>
+
+                    <div className='input-field'>
+                        <input id='age'
+                               name='age'
+                               value={ this.state.age }
+                               onChange={this.handleChange}
+                               type='text'
+                            />
+                        
+                        <label htmlFor='age'>Age</label>
+                    </div>
+
+                    <div className='input-field'>
+                        <input id='number'
+                               name='number'
+                               value={ this.state.number }
+                               onChange={this.handleChange}
+                               type='text'
+                            />
+                        <label htmlFor='number'>Phone Number</label>
+                    </div>
+
+                    <button onClick={ this.register }
+                            className='btn amber black-text'>
+                            Register
+                    </button>
                 </form>
             </div>
         );
