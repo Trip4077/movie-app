@@ -16,7 +16,7 @@ const MovieList = props => {
                                                 movie={movie}
                                                 profile={props.profile || false}/>
                            })
-                           : <p>No Results Found</p>}
+                           : <h4 className='no-results'>No Results Found</h4>}
         </div>
     );
 }

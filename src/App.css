@@ -1,9 +1,3 @@
-.thumbnail {
-  border: 1px solid red;
-  width: 30%;
-  cursor: pointer;
-}
-
 /*
 ---------------------------Navigation Styles---------------------------
 */
@@ -34,10 +28,6 @@
 /*
 ---------------------------Login/Register Styles---------------------------
 */
-.login {
-  height: 400px;
-}
-
 .form-shape {
   margin: 60px 0 40px 0;
   padding: 25px;
@@ -55,4 +45,63 @@
 
 .input-field {
   width: 60%;
+}
+
+/*
+---------------------------Searchbar Styles---------------------------
+*/
+
+.searchbar {
+  position: relative;
+
+  width: 70%;
+  margin: 30px auto;
+}
+
+#search {
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+#searchbar-icon {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  z-index: 500;
+
+  background-color: transparent;
+  border: none;
+}
+
+#searhbar-icon, #searchbar-icon i:hover {
+  cursor: pointer;
+}
+
+.no-results {
+  text-align: center
+}
+
+/*
+---------------------------Thumnail Styles---------------------------
+*/
+
+.thumbnail {
+  width: 33%;
+
+  display: inline-block;
+  position: relative;
+
+  cursor: pointer;
+}
+
+.fav-btn {
+  position: absolute;
+  right: 0;
+  top: 53%;
+}
+
+.thumbnail .card-content {
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-around;
 }

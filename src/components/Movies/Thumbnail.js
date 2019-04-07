@@ -7,6 +7,7 @@ import { addFavorite, deleteFavorite } from '../../actions';
 const Thumbnail = props => {
     const addHandler = e => {
         e.preventDefault();
+        console.log(props.movie)
         props.addFavorite(props.movie, props.user.id);
     }
 
@@ -14,24 +15,44 @@ const Thumbnail = props => {
         props.deleteFavorite(props.movie.id, props.user);
     }
 
+    const addButton = <button className="btn-floating halfway-fab waves-effect waves-light red black-text  fav-btn"
+                              onClick={addHandler}>
+
+                             <i className="material-icons">add</i>
+                      </button>
+
+    const removeButton = <button className="btn-floating halfway-fab waves-effect waves-light grey black-text fav-btn"
+                                 onClick={removeHandler}>
+                                
+                                <i className="material-icons">close</i>
+                        </button>
+
     return(
         <div className='thumbnail'>
             <Link to={`/movie/${props.movie.imdbID}`} >
-                <div className='thumbnail__display'>
-                    {props.movie.Poster ? <img src={props.movie.Poster} alt={props.movie.Title} />
-                                        : undefined}
-
-                    <div className='thumbnail__display__text'>
-                        <h3>{props.movie.Title}</h3>
-                        <p>{props.movie.Type}</p>
+                <div className="row">
+                    <div className="col s12 m12">
+                        <div className="card large z-depth-3">
+                            <div className="card-image">
+                                <img src={props.movie.Poster} alt={props.movie.Title}/>
+                                <p id='fav-btn'>Add to Favorites</p>
+                            </div>
+                            
+                            <div className="card-content">
+                                <p className='black-text'>{props.movie.Title} was released in {props.movie.Year}</p>
+                                <p>Click For More Info</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Link>
 
             <div className='thumbnail__btns'>
-                { !props.profile ? <button onClick={addHandler}>Add Movie</button> : null }
-                <button onClick={removeHandler}>Remove Movie</button>
-            </div>
+                { !props.profile ? addButton : removeButton }
+            </div>         
+
+
+
         </div>
     );
 }
