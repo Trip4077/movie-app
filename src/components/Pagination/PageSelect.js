@@ -16,13 +16,13 @@ const PageSelect = props => {
 
     return(
         <div className='page-index'>
-            <span onClick={decrementPage}> &#x2039; </span>
+            <ul className="pagination">
+                <li className="waves-effect" onClick={decrementPage}><i className="material-icons">chevron_left</i></li>
 
-            <ul>
-                { props.pageList.map(pageNum => <li key={pageNum} onClick={selectPage}>{pageNum}</li>) }
+                { props.pageList.map(pageNum => <li key={pageNum} onClick={selectPage} className="waves-effect">{pageNum}</li>) }
+
+                <li className="waves-effect" onClick={decrementPage}><i className="material-icons">chevron_right</i></li>
             </ul>
-
-            <span onClick={incrementPage}> &#x203A; </span>
         </div>
     );
 }

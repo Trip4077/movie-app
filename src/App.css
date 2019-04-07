@@ -105,3 +105,27 @@
   flex-direction: column;
   justify-content: space-around;
 }
+
+
+.pagination {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 75%;
+  margin: 30px auto;
+}
+
+.pagination li {
+  margin: 5px;
+  height: 30px;
+  width: 30px;
+
+  font-size: 18px;
+  font-weight: 500px;
+}
+
+.pagination li:hover {
+  background-color: darkorange;
+  color: white;
+}
