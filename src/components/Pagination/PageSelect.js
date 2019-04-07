@@ -21,7 +21,7 @@ const PageSelect = props => {
 
                 { props.pageList.map(pageNum => <li key={pageNum} onClick={selectPage} className="waves-effect">{pageNum}</li>) }
 
-                <li className="waves-effect" onClick={decrementPage}><i className="material-icons">chevron_right</i></li>
+                <li className="waves-effect" onClick={incrementPage}><i className="material-icons">chevron_right</i></li>
             </ul>
         </div>
     );

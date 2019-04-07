@@ -15,14 +15,24 @@ class ProfilePage extends React.Component {
     }
 
     render() {
+        const username = localStorage.getItem('username');
+
         return(
             <div className='profile'>
-                <h1>Profile</h1>
-                <h2>Favorites</h2>
+                <div className='section'>
+                    <h2>Welcome, { username }</h2>
+                </div>
+                <div className='divider'></div>
+                
+                <h4>Favorites</h4>
+                <div className='divider'></div>
+
                 <MovieList results={this.props.favorites} 
                            profile />
     
-                <h2>Schedule</h2>
+                <h4>Schedule</h4>
+                <div className='divider'></div>
+
                 <MovieList results={this.props.schedule} 
                            profile />
             </div>

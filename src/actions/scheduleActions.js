@@ -13,6 +13,8 @@ export const getSchedule = (id, username) => dispatch => {
 }
 
 export const schedule = movie => dispatch => {
+    console.log(movie)
+
     axios.post(`http://localhost:4321/api/schedule`, movie)
          .then(res => {
              dispatch({ type: UPDATE_SCHEDULE, payload: res.data })

@@ -39,9 +39,10 @@ class MoviePage extends React.Component {
             readTime: this.state.time,
             title: this.props.info.Title,
             imdb: this.props.info.imdbID,
-            user_id: this.props.user.id
+            user_id: localStorage.getItem('UID')
         }
 
+        console.log(movie)
         this.props.schedule(movie, this.props.user.id);
     }
 
