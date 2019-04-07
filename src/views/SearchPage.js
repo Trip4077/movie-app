@@ -70,6 +70,12 @@ class SearchPage extends Component {
     return (
       <div className="search">
 
+        <div className='section'>
+          <h3>Find Movies Now:</h3>
+        </div>
+        <div className='divider'></div>
+        
+
         <Search handleChange={this.handleChange}
                 performSearch={this.performSearch}
                 search={this.state.search}

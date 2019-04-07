@@ -51,6 +51,15 @@
 ---------------------------Searchbar Styles---------------------------
 */
 
+.search {
+  text-align: center;
+}
+
+.search h3 {
+  margin: 0;
+  margin-top: 35px;
+}
+
 .searchbar {
   position: relative;
 
@@ -106,6 +115,9 @@
   justify-content: space-around;
 }
 
+/*
+---------------------------Pagination Styles---------------------------
+*/
 
 .pagination {
   display: flex;
