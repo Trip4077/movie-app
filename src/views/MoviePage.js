@@ -54,22 +54,38 @@ class MoviePage extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className='movie-page'>
                 { this.props.info.Title ? <MovieInfo movie={this.props.info} /> : undefined }
 
-                <TimePicker placeholder='Select Time'
-                            use12Hours 
-                            className='xxx'
-                            name='time'
-                            onChange={this.selectTime}
-                            />
+                <div className='section'>
+                    <h4>Schedule Your Showing:</h4>
+                </div>
+                <div className='divider'></div>
 
-                <DatePicker
-                    selected={this.state.startDate}
-                    onChange={this.selectDate}
-                />
+                <div className='scheduler'>
+                    <div className='picker-container'>
+                        <h6>Time:</h6>
+                        <TimePicker placeholder='Select Time'
+                                    use12Hours 
+                                    className='xxx'
+                                    name='time'
+                                    onChange={this.selectTime}
+                                    />
 
-                <button onClick={this.scheduleDate}>Schedule</button>
+                        <h6>Date:</h6>
+                        <DatePicker
+                            className='dp'
+                            selected={this.state.startDate}
+                            onChange={this.selectDate}
+                        />
+                    </div>
+
+                    <button onClick={this.scheduleDate}
+                            className='btn waves-effect waves-light amber black-text'
+                            >
+                        Schedule
+                    </button>
+                </div>
             </div>
         );
     }

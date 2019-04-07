@@ -35,7 +35,6 @@ const Thumbnail = props => {
                         <div className="card large z-depth-3">
                             <div className="card-image">
                                 <img src={props.movie.Poster} alt={props.movie.Title}/>
-                                <p id='fav-btn'>Add to Favorites</p>
                             </div>
                             
                             <div className="card-content">

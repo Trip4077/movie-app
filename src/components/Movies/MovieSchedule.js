@@ -13,9 +13,8 @@ const MovieSchedule = props => {
     return (
         <ul className='collapsible'>
             <li>
-                <div className="collapsible-header"><i className="material-icons">filter_drama</i>{props.movie.date}</div>
+                <div className="collapsible-header"><i className="material-icons">filter_drama</i><span>You have scheduled {props.movie.title} to be viewed at {props.movie.date} - {props.movie.readTime}</span></div>
                 <div className="collapsible-body">
-                    <span>You have scheduled {props.movie.title} to be viewed at {props.movie.date} - {props.movie.readTime}</span>
                 </div>
             </li>
         </ul>
