@@ -6,6 +6,15 @@ export const REGISTER = 'REGISTER';
 export const LOADING = 'LOADING';
 export const END_LOAD = 'END_LOAD';
 
+/*
+    Expects:
+        { fullname-str,
+            username-str,
+            password-str,
+            number-str,
+            age-int }
+    to Create User
+*/
 export const register = user => dispatch => {
     
     axios.post(`http://localhost:4321/api/auth/register`, user)
@@ -18,6 +27,7 @@ export const register = user => dispatch => {
         })
 }
 
+ //Get Logged In User based on username, UID< and token
 export const login = user => dispatch => {
     const endpoint = `http://localhost:4321/api/auth/login`;
 
@@ -34,6 +44,7 @@ export const login = user => dispatch => {
         });
 }
 
+//Clears localStorage
 export const logout = () => dispatch => {
     localStorage.removeItem('username');
     localStorage.removeItem('UID');
