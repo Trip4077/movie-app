@@ -4,6 +4,15 @@
 
 @import "./components/Movies/css/Thumbnail.css";
 @import "./components/Movies/css/MovieInfo.css";
+@import "./components/Loader/Load.css";
+
+
+/*
+---------------------------Views Styles---------------------------  
+*/
+.container {
+  position: relative;
+}
 
 /*
 ---------------------------Login/Register Styles---------------------------

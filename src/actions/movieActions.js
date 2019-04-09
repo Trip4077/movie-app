@@ -7,6 +7,8 @@ export const END_LOAD = 'END_LOAD';
 
 //GET User Favorites based on user_id
 export const getFavorites = (id, username) => dispatch => {
+    dispatch({ type: LOADING });
+
     axios.get(`http://localhost:4321/api/favorites/${username}/${id}`)
         .then(res => dispatch({ type: UPDATE_FAV_LIST, payload: res.data }))
         .catch(err => console.log(err))
@@ -25,6 +27,8 @@ export const getFavorites = (id, username) => dispatch => {
     to add Movie to Favorites
 */
 export const addFavorite = (movie, id) => dispatch => {
+    dispatch({ type: LOADING });
+
     const movieData = {
         ...movie,
         user_id: id
@@ -39,6 +43,8 @@ export const addFavorite = (movie, id) => dispatch => {
 
 //DELETE a Favorite Movie based on favorite id
 export const deleteFavorite = (id, user) => dispatch => {
+    dispatch({ type: LOADING });
+
     axios.delete(`http://localhost:4321/api/favorites/${id}`)
             .then(res => {
                 dispatch({ type: END_LOAD });
@@ -52,6 +58,8 @@ export const deleteFavorite = (id, user) => dispatch => {
 
 //GET Movie information based on imdbID
 export const getInfo = imdbID => dispatch => {
+    dispatch({ type: LOADING })
+    
     axios.get(`http://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=db6f6716`)
         .then(res => {
             dispatch({ type: GET_INFO, payload: res.data });

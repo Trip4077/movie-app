@@ -1,0 +1,20 @@
+.load-container {
+    width: 60%;
+    background-color: transparent;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+#load-text {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    letter-spacing: 3px;
+}

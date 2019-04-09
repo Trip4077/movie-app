@@ -3,6 +3,7 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import TimePicker from 'rc-time-picker';
 import MovieInfo from '../components/Movies/MovieInfo';
+import Load from '../components/Loader/Load';
 
 import { connect } from 'react-redux';
 import { schedule, getInfo } from '../actions';
@@ -53,6 +54,11 @@ class MoviePage extends React.Component {
     }
 
     render() {
+        /* Check If Loading */
+        if(this.props.movieLists.loading) {
+            return <Load />
+        }
+
         return(
             <div className='movie-page'>
                 { this.props.info.Title ? <MovieInfo movie={this.props.info} /> : undefined }

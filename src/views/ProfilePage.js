@@ -1,4 +1,5 @@
 import React from 'react';
+import Load from '../components/Loader/Load';
 import MovieList from '../components/Movies/MovieList';
 import requireAuth from '../auth/requireAuth';
 
@@ -15,6 +16,13 @@ class ProfilePage extends React.Component {
     }
 
     render() {
+        const { favLoad, scheduleLoad } = this.props;
+  
+        /* Check If Loading */
+        if(favLoad || scheduleLoad) {
+            return <Load />
+        }
+
         const username = localStorage.getItem('username');
 
         return(
@@ -44,7 +52,9 @@ const mstp = state => {
     console.log(state)
     return {
         favorites: state.movieReducer.favorites,
+        favLoad: state.movieReducer.loading,
         schedule: state.scheduleReducer.schedule,
+        scheduleLoad: state.scheduleReducer.loading,
         user: state.userReducer.user
     }
 }
