@@ -3,6 +3,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:5050/api/users';
 
+//Adds JWT to headers.authorization
 axios.interceptors.request.use(
     function(options) {
         options.headers.authorization = localStorage.getItem('token');
@@ -14,6 +15,7 @@ axios.interceptors.request.use(
     }
 );
 
+//Validate existence of JWT, render component if found else prompt login
 export default (Component)  => {
     return class Authenticated extends React.Component {
         componentDidMount() {
