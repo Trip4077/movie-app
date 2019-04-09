@@ -7,7 +7,7 @@ import { addFavorite, deleteFavorite } from '../../actions';
 const Thumbnail = props => {
     const addHandler = e => {
         e.preventDefault();
-        console.log(props.movie)
+   
         props.addFavorite(props.movie, props.user.id);
     }
 
@@ -15,12 +15,14 @@ const Thumbnail = props => {
         props.deleteFavorite(props.movie.id, props.user);
     }
 
+    /* To Be Rendered on Search Page */
     const addButton = <button className="btn-floating halfway-fab waves-effect waves-light red black-text  fav-btn"
                               onClick={addHandler}>
 
                              <i className="material-icons">add</i>
                       </button>
 
+    /* To Be Rendered on Profile Page */
     const removeButton = <button className="btn-floating halfway-fab waves-effect waves-light grey black-text fav-btn"
                                  onClick={removeHandler}>
                                 
