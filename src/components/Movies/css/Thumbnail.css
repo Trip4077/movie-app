@@ -1,0 +1,24 @@
+/*
+---------------------------Thumbnail Styles---------------------------
+*/
+
+.thumbnail {
+    width: 33%;
+  
+    display: inline-block;
+    position: relative;
+  
+    cursor: pointer;
+  }
+  
+  .fav-btn {
+    position: absolute;
+    right: 0;
+    top: 53%;
+  }
+  
+  .thumbnail .card-content {
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around;
+  }

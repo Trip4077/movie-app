@@ -29,13 +29,16 @@ class SearchPage extends Component {
   performSearch = (e, newpage) => {
     e.preventDefault();
 
+    /* If newpage is passed in, store. Else store page from state */
     const page = newpage ? newpage : this.state.page;
+
     const lastPage = this.state.pageList[this.state.pageList.length-1]
     const searchTerm = this.state.search;
 
+    /* First and Last Page Check */
     if (page > lastPage || page < 1) return;
 
-
+    /* Get Page Based On State */
     axios.get(`http://www.omdbapi.com/?s=${searchTerm}&plot=${this.state.plot}&page=${page}&apikey=db6f6716`, {
       params: { newpage: page }
     })
@@ -51,8 +54,8 @@ class SearchPage extends Component {
         list.push(i);
       }
 
-      if(!res.data.totalResults) list = [];
-
+      if(!res.data.totalResults) { list = [] }
+      
       this.setState({
         results: res.data.Search,
         totalMovies: Number(res.data.totalResults),

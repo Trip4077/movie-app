@@ -1,0 +1,43 @@
+/*
+---------------------------Searchbar Styles---------------------------
+*/
+
+.search {
+    text-align: center;
+  }
+  
+  .search h3 {
+    margin: 0;
+    margin-top: 35px;
+  }
+  
+  .searchbar {
+    position: relative;
+  
+    width: 70%;
+    margin: 30px auto;
+  }
+  
+  #search {
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  
+  #searchbar-icon {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    z-index: 500;
+  
+    background-color: transparent;
+    border: none;
+  }
+  
+  #searhbar-icon, #searchbar-icon i:hover {
+    cursor: pointer;
+  }
+  
+  .no-results {
+    text-align: center
+  }
+  
