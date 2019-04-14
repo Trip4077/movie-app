@@ -5,7 +5,7 @@ import Load from '../components/Loader/Load';
 const BrowsePage = props => {
     return(
         <>
-            <h1>Browse</h1>
+            <h1>Reviews Coming Soon</h1>
             <Load />
         </>
     );

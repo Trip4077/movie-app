@@ -70,7 +70,10 @@ class SearchPage extends Component {
   }
 
   render() {
-    console.log(this.props)
+    const shortenedList = this.state.pageList;
+
+    if(shortenedList.length > 10) { shortenedList.length = 10 };
+
     return (
       <div className="search">
 
@@ -89,7 +92,7 @@ class SearchPage extends Component {
 
         <PageSelect performSearch={this.performSearch}
                     page={this.state.page}
-                    pageList={this.state.pageList}/>
+                    pageList={shortenedList}/>
       </div>
     );
   }
