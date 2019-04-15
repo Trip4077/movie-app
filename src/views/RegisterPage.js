@@ -28,6 +28,18 @@ class RegisterPage extends React.Component {
         const user = { ...this.state }
         user.age = Number(this.state.age);
 
+        const storeNumber = user.number.split('');
+
+        for(let i = 0; i < storeNumber.length; i++)  {
+            if(isNaN(storeNumber[i])) {
+                storeNumber.splice(i, 1);
+            }
+        }      
+
+        if(storeNumber[0] !== '1') { storeNumber.unshift('1') }
+
+        user.number = storeNumber.join('');
+
         this.props.register(user);
     }
 
