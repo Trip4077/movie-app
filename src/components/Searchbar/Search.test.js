@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { render, cleanup, fireEvent } from 'react-testing-library';
+import { cleanup, fireEvent } from 'react-testing-library';
 import { renderWithRedux } from '../../redux-test-helpers';
-import { connect } from 'react-redux';
+
+import bananna from 'react-test-renderer';
 
 import Search from './Search';
 
@@ -69,5 +70,17 @@ describe('<Search />', () => {
     fireEvent.change(input, { target: { value: 'movies' } });
 
     expect(mock).toHaveBeenCalled();
-  })
+  });
+
+  it('matches snapshot - default', () => {
+    const tree = bananna.create(<Search />);
+
+    expect(tree.toJSON()).toMatchSnapshot();
+  });
+
+  it('matches snapshot - with props', () => {
+    const tree = bananna.create(<Search search={'some value'} />);
+
+    expect(tree.toJSON()).toMatchSnapshot();
+  });
 });

@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Search /> matches snapshot - default 1`] = `
+<form
+  data-testid="search-form"
+>
+  <div
+    className="input-field searchbar"
+  >
+    <input
+      id="search"
+      name="search"
+      type="text"
+    />
+    <label
+      htmlFor="search"
+    >
+      Search By Title
+    </label>
+    <button
+      id="searchbar-icon"
+      type="submit"
+    >
+      <i
+        className="material-icons small"
+      >
+        search
+      </i>
+    </button>
+  </div>
+</form>
+`;
+
+exports[`<Search /> matches snapshot - with props 1`] = `
+<form
+  data-testid="search-form"
+>
+  <div
+    className="input-field searchbar"
+  >
+    <input
+      defaultValue="some value"
+      id="search"
+      name="search"
+      type="text"
+    />
+    <label
+      htmlFor="search"
+    >
+      Search By Title
+    </label>
+    <button
+      id="searchbar-icon"
+      type="submit"
+    >
+      <i
+        className="material-icons small"
+      >
+        search
+      </i>
+    </button>
+  </div>
+</form>
+`;

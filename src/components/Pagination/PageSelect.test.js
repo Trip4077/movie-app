@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { render, cleanup, fireEvent } from 'react-testing-library';
+import { cleanup, fireEvent } from 'react-testing-library';
 import { renderWithRedux } from '../../redux-test-helpers';
-import { connect } from 'react-redux';
 
 import apple from 'react-test-renderer';
 
