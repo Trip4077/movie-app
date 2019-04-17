@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PageSelect /> should match snapshot - default 1`] = `
+<div
+  className="page-index"
+>
+  <ul
+    className="pagination"
+    data-testid="page-select"
+  >
+    <li
+      className="waves-effect"
+      onClick={[Function]}
+    >
+      <i
+        className="material-icons"
+      >
+        chevron_left
+      </i>
+    </li>
+    <span />
+    <li
+      className="waves-effect"
+      onClick={[Function]}
+    >
+      <i
+        className="material-icons"
+      >
+        chevron_right
+      </i>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`<PageSelect /> should match snapshot - with props 1`] = `
+<div
+  className="page-index"
+>
+  <ul
+    className="pagination"
+    data-testid="page-select"
+  >
+    <li
+      className="waves-effect"
+      onClick={[Function]}
+    >
+      <i
+        className="material-icons"
+      >
+        chevron_left
+      </i>
+    </li>
+    <li
+      className="waves-effect"
+      onClick={[Function]}
+    >
+      1
+    </li>
+    <li
+      className="waves-effect"
+      onClick={[Function]}
+    >
+      2
+    </li>
+    <li
+      className="waves-effect"
+      onClick={[Function]}
+    >
+      3
+    </li>
+    <li
+      className="waves-effect"
+      onClick={[Function]}
+    >
+      4
+    </li>
+    <li
+      className="waves-effect"
+      onClick={[Function]}
+    >
+      5
+    </li>
+    <li
+      className="waves-effect"
+      onClick={[Function]}
+    >
+      <i
+        className="material-icons"
+      >
+        chevron_right
+      </i>
+    </li>
+  </ul>
+</div>
+`;

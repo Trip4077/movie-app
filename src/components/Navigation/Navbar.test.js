@@ -32,7 +32,6 @@ describe('<Navbar />', () => {
     getByText(/search/i);
   });
 
-
   xit('should fire function when clicked', () => {
     const mock = jest.fn();
     const { getByText } = renderWithRedux(<Navbar logout={mock} />);
@@ -42,5 +41,5 @@ describe('<Navbar />', () => {
     console.log(button);
 
     fireEvent.click(button);
-  })
+  });
 });
