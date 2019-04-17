@@ -82,7 +82,7 @@ export function renderWithRedux(
         return {
             ...render( <Provider store={store}>
                          <MemoryRouter>
-                            {ui}
+                            <div> {ui} </div>
                          </MemoryRouter>
                        </Provider> ),
             store
