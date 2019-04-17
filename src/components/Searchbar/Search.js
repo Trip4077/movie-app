@@ -2,11 +2,13 @@ import React from 'react';
 
 const Search = props => {
     return(
-        <form onSubmit={props.performSearch}>
+        <form onSubmit={props.performSearch}
+              data-testid='search-form'>
+
             <div className='input-field searchbar'>
                 <input type='text'
                         name='search'
-                        value={props.search}
+                        defaultValue={props.search}
                         onChange={props.handleChange}
                         id='search' />
 
@@ -18,6 +20,7 @@ const Search = props => {
                     <i className="material-icons small" >search</i>
                 </button>
             </div>
+
         </form>
     );
 }
