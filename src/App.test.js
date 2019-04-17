@@ -1,9 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
+import { render, cleanup } from 'react-testing-library';
+import { renderWithRedux } from './redux-test-helpers';
+import { connect } from 'react-redux';
+
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+afterEach(cleanup);
+
+describe('<App />', () => {
+  const connectedApp = connect(state => ({})(RoutedApp));
+
+  it('renders without crashing', () => {
+    renderWithRedux(<App />);
+  });
 });

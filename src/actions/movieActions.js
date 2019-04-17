@@ -1,9 +1,9 @@
 import axios from 'axios';
+import END_LOAD from './index';
 
 export const LOADING = 'LOADING';
 export const UPDATE_FAV_LIST = 'UPDATE_FAV_LIST';
 export const GET_INFO = 'GET_INFO';
-export const END_LOAD = 'END_LOAD';
 
 //GET User Favorites based on user_id
 export const getFavorites = (id, username) => dispatch => {

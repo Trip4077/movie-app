@@ -1,9 +1,9 @@
 import axios from 'axios';
+import END_LOAD from './index';
 
 export const UPDATE_SCHEDULE = 'UPDATE_SCHEDULE';
 export const TEXT_SENT = 'TEXT_SENT'; 
-export const LOADING = 'LOADING';
-export const END_LOAD = 'END_LOAD';
+
 
 //GET User Schedule based on user_id
 export const getSchedule = (id, username) => dispatch => {

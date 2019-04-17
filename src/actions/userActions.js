@@ -1,10 +1,9 @@
 import axios from 'axios';
+import END_LOAD from './index';
 
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const REGISTER = 'REGISTER';
-export const LOADING = 'LOADING';
-export const END_LOAD = 'END_LOAD';
 
 /*
     Expects:
