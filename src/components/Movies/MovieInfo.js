@@ -3,7 +3,7 @@ import React from 'react';
 const MovieInfo = props => {
     return(
         <div className='movie-info'>
-            <img src={props.movie.Poster} alt={props.movie.Title}  />
+            <img src={props.movie.Poster} alt={props.movie.Title} />
 
             <table className='striped info-table'>
                 <tbody>
