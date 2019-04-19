@@ -19,4 +19,16 @@ describe('<Thumbnail />', () => {
   it('renders without crashing', () => {
     renderWithRedux(<Thumbnail movie={movie} />);
   });
+
+  it('renders an add button if not on Profile View', () => {
+    const { getByText } = renderWithRedux(<Thumbnail movie={movie} />);
+
+    getByText(/add/i);
+  });
+
+  it('renders a remove button if on Profile View', () => {
+    const { getByText } = renderWithRedux(<Thumbnail movie={movie} profile />);
+
+    getByText(/close/i);
+  });
 });
