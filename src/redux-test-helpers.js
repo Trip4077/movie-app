@@ -9,7 +9,7 @@ import { render } from 'react-testing-library';
 
 import * as ACTIONS from './actions';
 
-function reducer(state = {}, action) {
+function reducer(state = { userReducer: { user: { id: 1 }}}, action) {
     switch(action.type) {
         case ACTIONS.LOADING:
             return {

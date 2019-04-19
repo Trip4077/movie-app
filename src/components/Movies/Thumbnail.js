@@ -27,7 +27,7 @@ const Thumbnail = props => {
                                  onClick={removeHandler}>
                                 
                                 <i className="material-icons">close</i>
-                        </button>
+                         </button>
 
     return(
         <div className='thumbnail'>
