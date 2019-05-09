@@ -1,9 +1,10 @@
 import {
     LOADING,
     UPDATE_SCHEDULE,
-    TEXT_SENT,
-    END_LOAD
+    TEXT_SENT
 } from '../../actions';
+
+import END_LOAD from '../../actions';
 
 const initialState = {
     loading: false,

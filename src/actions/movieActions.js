@@ -9,7 +9,7 @@ export const GET_INFO = 'GET_INFO';
 export const getFavorites = (id, username) => dispatch => {
     dispatch({ type: LOADING });
 
-    axios.get(`http://localhost:4321/api/favorites/${username}/${id}`)
+    axios.get(`https://textflix.herokuapp.com/api/favorites/${username}/${id}`)
         .then(res => dispatch({ type: UPDATE_FAV_LIST, payload: res.data }))
         .catch(err => console.log(err))
 }
@@ -34,7 +34,7 @@ export const addFavorite = (movie, id) => dispatch => {
         user_id: id
     }
 
-    axios.post(`http://localhost:4321/api/favorites/`, movieData)
+    axios.post(`https://textflix.herokuapp.com/api/favorites/`, movieData)
          .then( res => {
             dispatch({ type: END_LOAD });
          })
@@ -45,11 +45,11 @@ export const addFavorite = (movie, id) => dispatch => {
 export const deleteFavorite = (id, user) => dispatch => {
     dispatch({ type: LOADING });
 
-    axios.delete(`http://localhost:4321/api/favorites/${id}`)
+    axios.delete(`https://textflix.herokuapp.com/api/favorites/${id}`)
             .then(res => {
                 dispatch({ type: END_LOAD });
 
-                axios.get(`http://localhost:4321/api/favorites/${user.username}/${user.id}`)
+                axios.get(`https://textflix.herokuapp.com/api/favorites/${user.username}/${user.id}`)
                     .then(res => dispatch({ type: UPDATE_FAV_LIST, payload: res.data }))
                     .catch(err => console.log(err))     
             })

@@ -8,7 +8,7 @@ export const TEXT_SENT = 'TEXT_SENT';
 //GET User Schedule based on user_id
 export const getSchedule = (id, username) => dispatch => {
 
-    axios.get(`http://localhost:4321/api/schedule/${username}/${id}`)
+    axios.get(`https://textflix.herokuapp.com/api/schedule/${username}/${id}`)
          .then(res => dispatch({ type: UPDATE_SCHEDULE, payload: res.data }))
          .catch(err => console.log(err));
 }
@@ -26,7 +26,7 @@ export const getSchedule = (id, username) => dispatch => {
 export const schedule = movie => dispatch => {
     console.log(movie)
 
-    axios.post(`http://localhost:4321/api/schedule`, movie)
+    axios.post(`https://textflix.herokuapp.com/api/schedule`, movie)
          .then(res => {
              dispatch({ type: UPDATE_SCHEDULE, payload: res.data })
          })
@@ -35,11 +35,11 @@ export const schedule = movie => dispatch => {
 
 //DELETE Scheduled Reminder based on schedule id and user_id
 export const deleteScheduled = (id, user) => dispatch => {
-    axios.delete(`http://localhost:4321/api/schedule/${id}`)
+    axios.delete(`https://textflix.herokuapp.com/api/schedule/${id}`)
         .then(res => {
             dispatch({ type: END_LOAD });
 
-            axios.get(`http://localhost:4321/api/schedule/${user.username}/${user.id}`)
+            axios.get(`https://textflix.herokuapp.com/api/schedule/${user.username}/${user.id}`)
                  .then(res => dispatch({ type: UPDATE_SCHEDULE, payload: res.data }))
                  .catch(err => console.log(err));            
         })
@@ -50,7 +50,7 @@ export const deleteScheduled = (id, user) => dispatch => {
 
 // Expects { number-str, text-str }
 export const sendSms = textInfo => dispatch => {
-    axios.post('http://localhost:4321/api/schedule/send', textInfo)
+    axios.post('https://textflix.herokuapp.com/api/schedule/send', textInfo)
         .then(res => {
             console.log(res)
             dispatch({ type: TEXT_SENT, payload: res.data })

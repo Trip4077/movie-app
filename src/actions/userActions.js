@@ -16,7 +16,7 @@ export const REGISTER = 'REGISTER';
 */
 export const register = user => dispatch => {
     
-    axios.post(`http://localhost:4321/api/auth/register`, user)
+    axios.post(`https://textflix.herokuapp.com/api/auth/register`, user)
         .then(res => {
             console.log(res)
             dispatch({ type: REGISTER, payload: res.data })
@@ -28,7 +28,7 @@ export const register = user => dispatch => {
 
  //Get Logged In User based on username, UID< and token
 export const login = user => dispatch => {
-    const endpoint = `http://localhost:4321/api/auth/login`;
+    const endpoint = `https://textflix.herokuapp.com/api/auth/login`;
 
     axios.post(endpoint, user) 
         .then(res => {

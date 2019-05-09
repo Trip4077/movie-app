@@ -2,8 +2,9 @@ import {
     LOADING,
     UPDATE_FAV_LIST,
     GET_INFO,
-    END_LOAD
 } from '../../actions';
+
+import END_LOAD from '../../actions';
 
 const initialState = {
     loading: false,

@@ -1,7 +1,9 @@
 import React from 'react';
 
-import {  cleanup } from 'react-testing-library';
+import {  cleanup, fireEvent } from 'react-testing-library';
 import { renderWithRedux } from '../../../redux-test-helpers';
+
+import pear from 'react-test-renderer';
 
 import Thumbnail from '../thumbnail';
 

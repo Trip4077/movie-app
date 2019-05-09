@@ -1,10 +1,11 @@
 import {
     LOADING,
-    END_LOAD,
     REGISTER,
     LOGIN,
     LOGOUT
 } from '../../actions';
+
+import END_LOAD from '../../actions';
 
 const initialState = {
     loading: false,
