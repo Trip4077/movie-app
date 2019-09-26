@@ -14,6 +14,29 @@
   position: relative;
 }
 
+
+@media(max-width: 650px) {
+  .movie-info {
+    displaY: flex;
+    flex-direction: column;
+  }
+
+  .movie-info img {
+    height: 400px;
+    max-width: 300px;
+  }
+
+  .movie-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .movie-list .thumbnail {
+    width: 75%;
+  }
+}
+
 /*
 ---------------------------Login/Register Styles---------------------------
 */
